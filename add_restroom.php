@@ -19,7 +19,6 @@
 	include ("Nav.php");
 ?>
 </header>
-
 <?php
     if (!isset($_GET['step']) || $_GET['step'] == "select_location"){
         echo "<head>Select Location</head>";
@@ -97,7 +96,13 @@
                 echo "server error<br>";
             }
             $address_id = mysqli_fetch_row($result)[0] + 1;
-            $query = "INSERT INTO `Addresses` (`AddressID`, `StreetAddress`, `City`, `State`, `Zip`) VALUES ('" . $address_id . "', '".$_GET['address']."', '".$_GET['city']."', '".$_GET['state']."', '".$_GET['zip']."')";
+            $full_address = $_GET['address'] . " " . $_GET['city'] . " " .$_GET['state']. " " .$_GET['zip'];
+            $coords = geocode($full_address);
+            if ($coords){
+                $latitude = $coords[0];
+                $longitude = $coords[1];
+            }
+            $query = "INSERT INTO `Addresses` (`AddressID`, `StreetAddress`, `City`, `State`, `Zip`, `Latitude`, `Longitude`) VALUES ('" . $address_id . "', '".$_GET['address']."', '".$_GET['city']."', '".$_GET['state']."', '".$_GET['zip']."', '".$latitude."','".$longitude."')";
             $result = mysqli_query($connection,$query);
             if (!$result){
                 echo "server error<br>";
@@ -133,8 +138,27 @@
         }
         else echo "submitted";
     }
+    function geocode($address){
+        $address = urlencode($address);
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+        $resp_json = file_get_contents($url);
+        $response = json_decode($resp_json, true); 
+        if($response['status']=='OK'){
+            $latitude = $response['results'][0]['geometry']['location']['lat'];
+            $longitude = $response['results'][0]['geometry']['location']['lng'];
+            if($latitude && $longitude){
+                $coords = array();            
+                array_push(
+                    $coords, 
+                        $latitude, 
+                        $longitude
+                    );
+                return $coords; 
+            }else{
+                return false;
+            }  
+        }else{
+            return false;
+        }
+    }
 ?>
-
-
-</body>
-</html>

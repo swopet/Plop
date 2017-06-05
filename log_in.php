@@ -9,15 +9,12 @@
 <?php
 	include ("Nav.php");
 ?>
-</header>
 <head>Log In</head>  
 <form action = "log_in.php" method = "post">  
     <label>Username<br></label><input type = "text" name = "username"><br>
     <label>Password<br></label><input type = "password" name = "password"><br>
     <input type = "submit" value = "Submit">    
 </form>
-
-
 <?php
     if (isset($_POST['username'])){
         $error = "plop";

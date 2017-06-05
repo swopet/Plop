@@ -28,4 +28,27 @@
             $restroom = mysqli_fetch_row($result);
         }
     }
+    function geocode($address){
+        $address = urlencode($address);
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+        $resp_json = file_get_contents($url);
+        $response = json_decode($resp_json, true); 
+        if($response['status']=='OK'){
+            $latitude = $response['results'][0]['geometry']['location']['lat'];
+            $longitude = $response['results'][0]['geometry']['location']['lng'];
+            if($latitude && $longitude){
+                $coords = array();            
+                array_push(
+                    $coords, 
+                        $latitude, 
+                        $longitude
+                    );
+                return $coords; 
+            }else{
+                return false;
+            }  
+        }else{
+            return false;
+        }
+    }
 ?>

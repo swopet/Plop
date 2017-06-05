@@ -10,7 +10,7 @@
 	include ("Nav.php");
 ?>
 </header>
-	
+
 <form action = "create_user.php" method = "post">
         
     <label>Username<br></label><input type = "text" name = "username"><br>
