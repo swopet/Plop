@@ -1,10 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head lan="en">
 <?php
+
     include "database_connection.php";
+	include ("header.php");
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$connection) {
         echo "could not connect :(";
     }
 ?>
+<title> Plop </title>
+</head>
+<body>
+<header>
+<?php
+	include ("Nav.php");
+?>
+</header>
+
 <?php
     if (!isset($_GET['step']) || $_GET['step'] == "select_location"){
         echo "<head>Select Location</head>";
@@ -119,3 +134,7 @@
         else echo "submitted";
     }
 ?>
+
+
+</body>
+</html>

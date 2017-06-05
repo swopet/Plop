@@ -1,0 +1,140 @@
+li:nth-last-child(4) {
+	Float: left;
+	Border-right: 1px solid #bb;
+}
+
+li {
+	Float: right;
+	Border-right: 1px solid #bb;
+}
+/*li a {
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+ }
+ */
+ 
+ .myButtons{
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+ }
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+Button, input  {
+	Float: right;
+}
+
+h1 {
+	float: center;
+}
+
+
+
+body {
+	background-image: ;
+	width: 900px;
+	float: center;
+	margin:auto;
+	text-align: left;
+	border:none;
+}
+
+input.rock {
+display: block; 
+background-image:url(images/rock.png);
+width:128px;
+height:128px;
+position: absolute;
+top: 150px;
+right:860px;
+}
+input.paper {
+display: block;
+background-image:url(images/paper.png);
+width:128px;
+height:128px;
+position: absolute;
+top: 150px;
+right:710px;
+}
+input.scissor {
+display: block;
+background-image:url(images/scissors.png);
+width:128px;
+height:128px;
+position: absolute;
+top: 150px;
+right:560px;
+}
+p.yourchosen{
+display: block;
+/*background-image:url(images/scissors.png);*/
+width:128px;
+height:128px;
+position: absolute;
+top: 350px;
+right:790px;
+}
+p.computerschosen {
+display: block;
+/*background-image:url(images/scissors.png);*/
+width:128px;
+height:128px;
+position: absolute;
+top: 350px;
+right:660px;
+}
+
+
+p.Y {
+
+position:absolute;
+top: 310px;
+right:810px;
+}
+p.C {
+
+position:absolute;
+top: 310px;
+right:710px;
+}
+div.scoreboard {
+position: absolute; 
+bottom: 100px; 
+right: 300px; 
+width: 100px; 
+text-align:right;
+}
+
+div.SignUp{
+	padding: 10px;
+}
+
+footer {
+	position:absolute;
+	bottom:0;
+	width: 900px;
+	display: block;
+    color: white;
+	background-color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	}
+	
+.myActiveButton {
+	background-color: red;
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+	}

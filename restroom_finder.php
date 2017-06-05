@@ -1,10 +1,16 @@
 <?php
     include "database_connection.php";
+	include "header.php";
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$connection) {
         echo "could not connect :(";
     }
 ?>
+<header>
+<?php
+	include ("Nav.php");
+?>
+</header>
 <head>Restrooms in Corvallis</head>
 <?php
     $query = "SELECT Name, Description FROM Restrooms NATURAL JOIN Locations";
