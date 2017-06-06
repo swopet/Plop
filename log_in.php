@@ -16,6 +16,10 @@
     <input type = "submit" value = "Submit">    
 </form>
 <?php
+    if ($_GET['logout'] = 'true' and isset($_SESSION['user'])){
+        echo "Logged out of account " . $_SESSION['user'];
+        unset($_SESSION['user']);
+    }
     if (isset($_POST['username'])){
         $error = "plop";
         $username = $connection->real_escape_string($_POST['username']);
@@ -45,6 +49,7 @@
                     else {
                         if ($hash == mysqli_fetch_row($result)[0]){
                             $error = "Correct username and password! Logged in<br>";
+                            $_SESSION['user'] = $username;
                         }
                         else {
                             $error = "Incorrect username or password<br>";
