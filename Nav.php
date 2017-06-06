@@ -36,7 +36,7 @@ $Navid =basename($_SERVER['PHP_SELF'],".php");
 		<li><a class="<?php echo $Add_restroom; ?>" href="add_restroom.php">Add Restroom</a></li>
 		<li><a class="<?php echo $Login; ?>" href="log_in.php">Login</a></li>
 		<li><a class="<?php echo $user_profile; ?>" href="user_profile.php">Account Summary</a></li>
-		<li><a class="<?php echo $Restrooms; ?>" href="restroom_finder.php">Leave a Reivew</a></li>
+		<li><a class="<?php echo $Restrooms; ?>" href="restroom_finder.php">Leave a Review</a></li>
 		<li><a class="<?php echo $Register; ?>" href="create_user.php">Sign-Up</a></li>
 
 	</ul>
