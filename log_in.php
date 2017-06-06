@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "database_connection.php";
 	include ("header.php");
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -16,7 +17,7 @@
     <input type = "submit" value = "Submit">    
 </form>
 <?php
-    if ($_GET['logout'] = 'true' and isset($_SESSION['user'])){
+    if ($_GET['log_out'] = 'true' and isset($_SESSION['user'])){
         echo "Logged out of account " . $_SESSION['user'];
         unset($_SESSION['user']);
     }
