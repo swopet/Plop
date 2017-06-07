@@ -7,9 +7,6 @@ $user_profile = "myButtons";
 $Restrooms = "myButtons";
 $Register = "myButtons";
 $Add_restroom = "myButtons";
-
-
-
 $Navid =basename($_SERVER['PHP_SELF'],".php");
 	if ($Navid =="Home"){
 		$Home = 'myActiveButton';

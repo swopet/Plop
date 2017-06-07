@@ -23,19 +23,19 @@
     if ($_GET['action'] == 'set_location'){
         $_SESSION['coords'] = geocode($_GET['my_address']);
         if (!$_SESSION['coords']){
-            echo "could not find your location :(<br>";
+            echo "could not find your location: \"".$_GET['my_address']."\"<br>";
         }
     }
     if (isset($_SESSION['coords']) && $_SESSION['coords']){
         $bathrooms = get_bathrooms($connection,deg2rad($_SESSION['coords'][0]),deg2rad($_SESSION['coords'][1]));
         foreach ($bathrooms as $bathroom){
-            $query = "SELECT RestroomID FROM Restrooms WHERE LocationID = " . $bathroom['LocationID'];
+            $query = "SELECT RestroomID, AvgRating FROM Restrooms WHERE LocationID = " . $bathroom['LocationID'];
             $result = mysqli_query($connection,$query);
-            if ($restroomID = mysqli_fetch_row($result)[0]){
-                echo $bathroom['distance'] . "km: " . $bathroom['Name'] . "<br>";
-                echo "<a href = \"restroom_info.php?restroom_id=".$restroomID."\">Restroom ".$restroomID."</a><br>";
-                while($restroomID = mysqli_fetch_row($result)[0]){
-                    echo "<a href = \"restroom_info.php?restroom_id=".$restroomID."\">Restroom ".$restroomID."</a><br>";
+            if ($row = mysqli_fetch_row($result)){
+                echo "~".$bathroom['distance'] . "km: " . $bathroom['Name'] . "<br>";
+                echo "<a href = \"restroom_info.php?restroom_id=".$row[0]."\">Restroom ".$row[0]."</a> (".(($row[1] == 0) ? "unrated" : (number_format($row[1],1)."/10")).")<br>";
+                while($row = mysqli_fetch_row($result)){
+                    echo "<a href = \"restroom_info.php?restroom_id=".$row[0]."\">Restroom ".$row[0]."</a> (".(($row[1] == 0) ? "unrated" : (number_format($row[1],1)."/10")).")<br>";
                 }
                 echo "<br>";
             }
@@ -44,7 +44,7 @@
     }
     function geocode($address){
         $address = urlencode($address);
-        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}";
+        $url = "http://maps.google.com/maps/api/geocode/json?address={$address}"; //call to Google Maps API
         $resp_json = file_get_contents($url);
         $response = json_decode($resp_json, true); 
         if($response['status']=='OK'){
@@ -65,8 +65,8 @@
             return false;
         }
     }
-    function distance($lat1,$long1,$lat2,$long2){
-        $radius = 6371e3;
+    function distance($lat1,$long1,$lat2,$long2){ //Haversine formula
+        $radius = 6371e3; //radius of the earth in meters
         $delta_lat = ($lat2-$lat1);
         $delta_long = ($long2-$long1);
         $a = sin($delta_lat/2)*sin($delta_lat/2)+cos($lat1)*cos($lat2)*sin($delta_long/2)*sin($delta_long/2);

@@ -49,7 +49,7 @@
                     }
                     else {
                         if ($hash == mysqli_fetch_row($result)[0]){
-                            $error = "Correct username and password! Logged in<br>";
+                            $error = "Successfully logged in as $username<br>";
                             $_SESSION['user'] = $username;
                         }
                         else {

@@ -118,6 +118,7 @@
             if (!$result){
                 echo "server error on Locations<br>";
             }
+            
         }
         else {
             $location_id = $_GET['location_id'];
@@ -136,7 +137,9 @@
         if (!$result){
             echo "server error on Submission<br>";
         }
-        else echo "submitted";
+        else{
+            echo "Submitted your restroom. <a href = \"restroom_info.php?restroom_id=".$restroom_id."\">Leave a Review</a>";
+        }
     }
     function geocode($address){
         $address = urlencode($address);

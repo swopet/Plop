@@ -10,7 +10,6 @@
 	include ("Nav.php");
 ?>
 </header>
-
 <form action = "create_user.php" method = "post">
         
     <label>Username<br></label><input type = "text" name = "username"><br>
@@ -38,7 +37,7 @@
                 $error_msg = "Submission failed for some reason :(<br>";
             }
             else {
-                $error_msg = "Successfully submitted user " . $username . "<br>";
+                $error_msg = "Successfully created user " . $username . ", <a href = \"log_in.php\">log in</a><br>";
             }
             echo $error_msg;
         }
