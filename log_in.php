@@ -10,12 +10,15 @@
 <?php
 	include ("Nav.php");
 ?>
+</header>
+<div id="bodyLog">
 <head>Log In</head>  
 <form action = "log_in.php" method = "post">  
     <label>Username<br></label><input type = "text" name = "username"><br>
     <label>Password<br></label><input type = "password" name = "password"><br>
     <input type = "submit" value = "Submit">    
 </form>
+</div>
 <?php
     if ($_GET['log_out'] = 'true' and isset($_SESSION['user'])){
         echo "Logged out of account " . $_SESSION['user'];

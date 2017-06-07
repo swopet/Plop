@@ -3,7 +3,6 @@
 
 <head lan="en">
 <?php
-
     include "database_connection.php";
 	include ("header.php");
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -11,18 +10,23 @@
         echo "could not connect :(";
     }
 ?>
-<title> Plop </title>
+<title id ="picture"> Plop </title>
 </head>
-<body>
+
 <header>
 <?php
 	include ("Nav.php");
 ?>
 </header>
+
+<body>
+<div id="bodyAdd">
+<div id ="SelLoc">
 <?php
     if (!isset($_GET['step']) || $_GET['step'] == "select_location"){
         echo "<head>Select Location</head>";
         ?>
+	</div>
         <form action = "add_restroom.php" id = "location_form">
         <input type = "hidden" name = "step" value = "add_restroom">
         <?php
@@ -44,18 +48,26 @@
         ?>
         <input type = "submit">
         </form>
+</div>
+
         <?php
     }
     if ($_GET['step'] == "add_restroom"){
         ?>
+<div id="bodyAdd2">
+		<div id="addTitle1">	
         <head> Add New Restroom </head><br>
+		</div>
+		
         <form action = "add_restroom.php" id = "restroom_form">
         <input type = "hidden" name = "step" value = "submit_restroom">
         <input type = "hidden" name = "location_id" value = <?php echo $_GET['location_id']; ?>>
         <?php
         if ($_GET['location_id'] == "-1"){
             ?>
+			<div id="addLoc">
             <head> Add New Location </head><br>
+			</div>
             <label>Location Name<input type = "text" name = "name"> </input><br>
             <label>Street Address<input type = "text" name = "address"> </input><br>
             <label>City<input type = "text" name = "city"> </input><br>
@@ -77,15 +89,16 @@
             }
         }
         ?>
-        
+        <div id="makeFloat">
         <label>Description<input type = "text" name = "description"> </input><br>
         <label>Gender Neutral<input type = "checkbox" name = "gender"> </input><br>
         <label>Handicap Accessible<input type = "checkbox" name = "handicap"> </input><br>
         <label>Public<input type = "checkbox" name = "public"> </input><br>
         <label>Stalls<input type = "text" name = "stalls"> </input><br>
-        
+        </div>
         <input type = "submit">
         </form>
+</div>
         <?php
     }
     else if ($_GET['step'] == "submit_restroom"){
@@ -165,3 +178,5 @@
         }
     }
 ?>
+</body>
+</html>

@@ -20,7 +20,7 @@
 	include ("Nav.php");
 ?>
 </header>
-
+<div id="bodyUser">
 <div id = "username"> <br>
   Your Username: <i><?php echo $username; ?></i>
 </div>
@@ -58,3 +58,4 @@
         }
     }
 ?>
+</div>

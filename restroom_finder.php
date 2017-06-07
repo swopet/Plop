@@ -1,3 +1,4 @@
+<html>
 <?php
     session_start();
     include "database_connection.php";
@@ -12,7 +13,12 @@
 	include ("Nav.php");
 ?>
 </header>
+<body>
+
+<div id="bodyRestFind">
+<div id="title">
 <head>Restroom Locations Closest to You</head><br>
+</div>
 <form action = "restroom_finder.php" id = "location_entry">
 <input type = "hidden" name = "action" value = "set_location">
 <label>Enter Your Location: </label><input type = "text" name = "my_address">
@@ -101,3 +107,6 @@
         return $return_arr;
     }
 ?>
+</div>
+</body>
+</html>

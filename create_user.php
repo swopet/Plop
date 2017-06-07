@@ -10,6 +10,7 @@
 	include ("Nav.php");
 ?>
 </header>
+<div id="bodyCreate">
 <form action = "create_user.php" method = "post">
         
     <label>Username<br></label><input type = "text" name = "username"><br>
@@ -18,6 +19,7 @@
     <input type = "submit" value = "Submit">
     
 </form>
+</div>
 <?php
     if (isset($_POST['username'])){
         $username = $_POST['username'];

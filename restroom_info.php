@@ -19,7 +19,7 @@
 	include ("Nav.php");
 ?>
 </header>
-
+<div id="BodyInfo">
 <br><head> <b>Restroom Summary</b> <br> </head> <br>
 
 <?php
@@ -116,7 +116,32 @@
             <input type = "hidden" name = "restroom_id" value = <?php echo $_GET['restroom_id']; ?>>
             <textarea name = "review_text" rows = "5" cols = "40">[review text here]</textarea><br>
             <label>Supply status</label><textarea name = "supply_text" rows = "2" cols = "40"></textarea><br>
-            <label>Cleanliness</label><input type = "range" name = "cleanliness" min = "1" max = "10" step = "1" value = "5"><br>
+			
+            <label>Cleanliness</label><span id="slider_value2" style="color:red;font-weight:bold;"></span><br>
+			<input type="button" value="-" onClick="subtract_one()">
+			0 <input type="range" min="0" max="1000" step="1" name="sld6" value=477" onchange="show_value2(this.value)"> 1,000 
+			<input type="button" value="+" onClick="add_one()"> 
+			<script type='text/javascript'>
+			function show_value2(x)
+				{
+				document.getElementById("slider_value2").innerHTML=x;
+				}
+				function add_one()
+				{
+				document.f.sld6.value=parseInt(document.f.sld6.value)+1;
+				show_value2(document.f.sld6.value);
+				}
+			function subtract_one()
+				{
+				document.f.sld6.value=parseInt(document.f.sld6.value)-1;
+				show_value2(document.f.sld6.value);
+				}
+			</script>
+			
+			
+			
+			
+			<input type = "range" name = "cleanliness" min = "1" max = "10" step = "1" value = "5"><br>
             <label>Overall Rating</label><input type = "range" name = "rating" min = "1" max = "10" step = "1" value = "5"><br>
             <input type = "submit">
             </form>
@@ -125,3 +150,4 @@
         
     }
 ?>
+</div>
