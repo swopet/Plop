@@ -9,13 +9,15 @@
 <?php
 	include ("Nav.php");
 ?>
+
 </header>
 <div id="bodyCreate">
+<p> Sign-Up </p>
 <form action = "create_user.php" method = "post">
         
-    <label>Username<br></label><input type = "text" name = "username"><br>
-    <label>Password<br></label><input type = "password" name = "password"><br>
-    <label>Repeat Password<br></label><input type = "password" name = "password2"><br>
+    <input type = "text" name = "username" placeholder= "Enter Username"><br>
+    <input type = "password" name = "password" placeholder= "Enter Password"><br>
+    <input type = "password" name = "password2" placeholder= "Re-Enter Password"><br>
     <input type = "submit" value = "Submit">
     
 </form>
@@ -39,7 +41,7 @@
                 $error_msg = "Submission failed for some reason :(<br>";
             }
             else {
-                $error_msg = "Successfully created user " . $username . ", <a href = \"log_in.php\">log in</a><br>";
+                $error_msg = "Successfully submitted user " . $username . "<br>";
             }
             echo $error_msg;
         }

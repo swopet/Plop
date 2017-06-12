@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
+<div id="styleChange">
 
+</div>
 <head lan="en">
 <?php
+	
     include "database_connection.php";
 	include ("header.php");
     $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -11,22 +14,27 @@
     }
 ?>
 <title id ="picture"> Plop </title>
-</head>
+
+
+
 
 <header>
 <?php
 	include ("Nav.php");
 ?>
 </header>
-
+</head>
 <body>
-<div id="bodyAdd">
-<div id ="SelLoc">
+<div id="bodyAdd1">
+	<div id="makeFloat1">
+		<div id ="SelLoc">
 <?php
     if (!isset($_GET['step']) || $_GET['step'] == "select_location"){
+		
         echo "<head>Select Location</head>";
         ?>
-	</div>
+		
+		</div>
         <form action = "add_restroom.php" id = "location_form">
         <input type = "hidden" name = "step" value = "add_restroom">
         <?php
@@ -37,7 +45,7 @@
         }
         else {
             echo "<select name = \"location_id\" form = \"location_form\">";
-            echo "<option value = -1>[NEW]</option>";
+            echo "<option style='background:black; opacity:.8;' value = -1>[NEW]</option>";
             $location = mysqli_fetch_row($result);
             while ($location){
                 echo "<option value = ".$location[0] . ">" . $location[1] . "</option>";
@@ -46,17 +54,22 @@
             echo "</select>";
         }
         ?>
-        <input type = "submit">
-        </form>
+		
+        <input type = "submit" name="submitAdd">
+	</div>
+    </form>
+
 </div>
+
 
         <?php
     }
     if ($_GET['step'] == "add_restroom"){
+		$styleSheet=1;
         ?>
 <div id="bodyAdd2">
-		<div id="addTitle1">	
-        <head> Add New Restroom </head><br>
+		<div id="addTitle1">
+			<head> Add New Restroom </head><br>
 		</div>
 		
         <form action = "add_restroom.php" id = "restroom_form">
@@ -65,14 +78,17 @@
         <?php
         if ($_GET['location_id'] == "-1"){
             ?>
+			<div id="makeFloat">
 			<div id="addLoc">
-            <head> Add New Location </head><br>
+			
+            <head name="title"> Add New Location </head>
 			</div>
-            <label>Location Name<input type = "text" name = "name"> </input><br>
-            <label>Street Address<input type = "text" name = "address"> </input><br>
-            <label>City<input type = "text" name = "city"> </input><br>
-            <label>State<input type = "text" name = "state"> </input><br>
-            <label>ZIP<input type = "text" name = "zip"> </input><br>
+			
+            <input type = "text" name = "name" placeholder="Loacation Name"> </input><br>
+            <input type = "text" name = "address" placeholder="Street Address"> </input><br>
+            <input type = "text" name = "city" placeholder="City"> </input><br>
+            <input type = "text" name = "state" placeholder="State"> </input><br>
+            <input type = "text" name = "zip" placeholder="zip"> </input><br>
             
             <?php
         }
@@ -89,17 +105,30 @@
             }
         }
         ?>
-        <div id="makeFloat">
-        <label>Description<input type = "text" name = "description"> </input><br>
-        <label>Gender Neutral<input type = "checkbox" name = "gender"> </input><br>
+        
+        <input type = "text" name = "description" placeholder="description"> </input><br>
+		<input type = "text" name = "stalls" placeholder="Stalls"> </input><br>
+		
+        <label>Gender Neutral <input type = "checkbox" name = "gender"></input><br>
         <label>Handicap Accessible<input type = "checkbox" name = "handicap"> </input><br>
         <label>Public<input type = "checkbox" name = "public"> </input><br>
-        <label>Stalls<input type = "text" name = "stalls"> </input><br>
-        </div>
-        <input type = "submit">
+        
+        
+        <input type = "submit" onclick="document.getElementById('bodyAdd').setAttribute('id','blank')">
+		</div>
         </form>
 </div>
-        <?php
+
+
+<script>
+	var div = document.getElementById("bodyAdd");
+
+	function style() {
+		div.setAttribute("id","blank");
+	}
+
+</script>   
+ <?php
     }
     else if ($_GET['step'] == "submit_restroom"){
         if ($_GET['location_id'] == "-1"){
@@ -131,7 +160,6 @@
             if (!$result){
                 echo "server error on Locations<br>";
             }
-            
         }
         else {
             $location_id = $_GET['location_id'];
@@ -150,9 +178,7 @@
         if (!$result){
             echo "server error on Submission<br>";
         }
-        else{
-            echo "Submitted your restroom. <a href = \"restroom_info.php?restroom_id=".$restroom_id."\">Leave a Review</a>";
-        }
+        else echo "submitted";
     }
     function geocode($address){
         $address = urlencode($address);
@@ -178,5 +204,6 @@
         }
     }
 ?>
+
 </body>
 </html>

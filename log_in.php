@@ -12,15 +12,16 @@
 ?>
 </header>
 <div id="bodyLog">
-<head>Log In</head>  
+<h4>Log In</h4>  
 <form action = "log_in.php" method = "post">  
-    <label>Username<br></label><input type = "text" name = "username"><br>
-    <label>Password<br></label><input type = "password" name = "password"><br>
+    <input type = "text" name = "username" placeholder=" Enter Username" ><br>
+    <input type = "password" name = "password" placeholder=" Enter Password"><br>
     <input type = "submit" value = "Submit">    
 </form>
 </div>
+
 <?php
-    if ($_GET['log_out'] = 'true' and isset($_SESSION['user'])){
+	if ($_GET['log_out'] = 'true' and isset($_SESSION['user'])){
         echo "Logged out of account " . $_SESSION['user'];
         unset($_SESSION['user']);
     }
@@ -52,8 +53,7 @@
                     }
                     else {
                         if ($hash == mysqli_fetch_row($result)[0]){
-                            $error = "Successfully logged in as $username<br>";
-                            $_SESSION['user'] = $username;
+                            $error = "Correct username and password! Logged in<br>";
                         }
                         else {
                             $error = "Incorrect username or password<br>";

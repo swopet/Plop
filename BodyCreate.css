@@ -1,0 +1,90 @@
+#bodyCreate{
+	position: absolute;
+	Background: orange;
+	margin-left: 450px; 
+	margin-top: 100px;
+	height: 300px;
+	width: 260px;
+	padding: 10px;
+	opacity:.8;
+	border-radius:10px;
+}
+
+#bodyCreate p{
+	font-size: 20px;
+	font-weight:bold;
+	font-family: Dergy;
+	border-top: 20px;
+	}
+#bodyCreate input[type="hidden"]{
+	margin-left:50px;
+	width:300px;
+	height:300px;
+	border-radius:10px;
+	
+}
+
+#bodyCreate input[type="text"]{
+	width:260px;
+	height: 50px;
+	background: black;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius:10px;
+	color: White;
+	font-family: 'Exo', sans-serif;
+	font-size:16px;
+	font-weight:400;
+	padding:4px;
+	}
+	
+#bodyCreate input[type="password"]{
+	width:260px;
+	height: 50px;
+	background: black;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius:10px;
+	color: White;
+	font-family: 'Exo', sans-serif;
+	font-size:16px;
+	font-weight:400;
+	padding:12px;
+	}
+	
+#bodyCreate input[type="submit"]{
+	width:260px;
+	height:70px;
+	background:#0d0d0d;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius:2px;
+	color: white;
+	font-family: Derby;
+	font-size:32px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top:10px;
+	opacity:none;
+}
+
+#bodyCreate input[type="submit"]:hover{
+	opacity:0.8;
+}	
+
+#bodyCreate input[type="submit"]:active{
+	opacity:0.8;;
+}	
+
+#bodyCreate input[type="text"]:focus{
+	outline:none;
+	border:1px solid rgba (255,255,255,0.9);
+}	
+
+#bodyCreate input[type="password"]:focus{
+	outline:none;
+	border:1px solid rgba (255,255,255,0.9);
+}	
+
+#bodyCreate input[type="submit"]:focus{
+	outline:none;
+	
+}
